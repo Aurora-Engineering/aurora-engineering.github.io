@@ -3,3 +3,25 @@
 .env
 .env.*
 node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.wrangler/
+.local-review/
+
+# Generated static site and copied scaffold kept only for reference.
+out/
+build/
+dist/
+source-documents/
+db/
+drizzle/
+examples/
+worker/
+app/chatgpt-auth.ts
+drizzle.config.ts
+vite.config.ts
+tests/rendered-html.test.mjs
+README copy.md
+Start-Website.ps1
+START-HERE.md

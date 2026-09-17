@@ -1,0 +1,36 @@
+{
+  "name": "aurora-engineering",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "npm run dev:local",
+    "dev:local": "next dev --hostname 127.0.0.1 --port 4173 --webpack",
+    "build": "next build --webpack",
+    "build:local": "npm run build",
+    "preview:static": "node scripts/serve-static.mjs",
+    "check:feedback": "playwright test --config playwright.feedback.config.ts",
+    "check:static": "playwright test --config playwright.static.config.ts",
+    "test": "npm run check:feedback",
+    "lint": "eslint app --ignore-pattern chatgpt-auth.ts"
+  },
+  "dependencies": {
+    "next": "16.3.5",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3"
+  },
+  "type": "module"
+}
