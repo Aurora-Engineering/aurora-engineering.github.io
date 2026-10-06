@@ -19,8 +19,8 @@ This is the acceptance checklist for subsequent edits. The user's explicit later
 - [x] **B11 — Capability cards:** replace crosshair icons with relevant imagery and remove keyword tags. (Slides 7–8)
 - [x] **B12 — Leadership placement:** immediately after “What we do.” (Slide 9)
 - [x] **B13 — Exact leadership introduction:** “Decades of hands-on experience across NASA, the Department of Defense, and numerous flight missions, spanning spacecraft operations, advanced research, and mission-critical engineering.” (Slide 9)
-- [ ] **B14 — Headshots and profiles:** real headshots needed for Stephen Kreisler, Conrad Schiff, and Carrie Hill. Their initials are placeholders. Steve's and Conrad's unhelpful profile links are removed. Biography popups are deferred. (Slide 10)
-- [x] **B15 — Titles:** Steve: Chief Technology Officer, Chief Information Officer. Conrad: Chief Scientist, Business Development Lead. Carrie: Research Director. (Slide 10)
+- [x] **B14 — Headshots and profiles:** the original headshot request is temporarily superseded by U11. Leadership is text-only, with no photos or portrait placeholders. Steve's and Conrad's unhelpful profile links remain removed. Biography popups remain deferred. (Slide 10; U11)
+- [x] **B15 — Titles:** Steve: Chief Technology Officer, Chief Information Officer. Conrad: Chief Scientist, Business Development Lead. Carrie's former Research Director entry is superseded by Miles Bengtson, Chief Technologist, under U11; do not transfer her title or biography to him. (Slide 10; U11)
 - [x] **B16 — Remove repetition:** no duplicate “A smarter spacecraft. In real time.” section and no homepage “Research in the open.” publications section. Relevant sources may remain in detailed briefs. (Slide 12)
 - [x] **B17 — Product presentation:** visible MEDOS expansion, “Module for the Event Driven Operation of Spacecraft,” and supplied MEDOS mark. Visible HDRL expansion, “Heliophysics Digital Resource Library,” and logo under collaborators. Keep technical figures primary in the product gallery. (Slide 13, with U02/U06 below)
 - [x] **B18 — News imagery:** use actual LinkedIn-post images where available, especially CAPSTONE. The text-only SmallSat post has a text cover; do not invent a post photograph. (Slide 14)
@@ -41,17 +41,28 @@ This is the acceptance checklist for subsequent edits. The user's explicit later
 - **U09 — Email-only contact:** remove the submission form and its email API. Use the existing `info@aurora.engineering` address for general and mission inquiries and `careers@auroraengineering.com` for careers, displayed prominently as readable email links. Retain the office address and LinkedIn link. Add no services, accounts, or recurring costs. The website does not send messages; a visitor may open their own email app and choose to send there.
 - **U10 — Approved release:** on September 17, 2026, the user explicitly requested updating the company repository and deploying this reviewed site to GitHub Pages. Static-export adaptation and the Pages build workflow implement that release. U07 remains in effect for future updates; local previews remain the review method.
 
+- **U11 — Leadership update, October 6, 2026:** replace Carrie Hill with Dr. Miles Bengtson on the homepage and leadership page. The user confirmed his Aurora Engineering title as **Chief Technologist**. Temporarily remove all leadership headshots and portrait placeholders. Preserve original image files locally. Do not inherit Carrie's biography or research links; Miles's biography remains omitted until suitable source material is supplied.
+- **U12 — Office locations:** show both New Hampshire and Rockville, Maryland in the homepage, leadership, and product-page footers. Keep the existing full Wilton address. The user explicitly approved **Rockville, Maryland** only for now; a street address, suite, and ZIP are not required for this update.
+- **U13 — Custom domain planning:** prepare the plan for using `auroraengineering.com` with GitHub Pages. Do not change Squarespace yet. No GitHub settings, DNS, publishing, or repository updates are authorized by this local-edit and planning request.
+- **U14 — Approved October release:** on October 6, 2026, after reviewing the local preview, the user explicitly requested pushing the reviewed U11–U12 changes to GitHub Pages. This authorizes committing, pushing, and deploying that update to the existing GitHub Pages URL. U13's custom-domain plan remains unapplied; future releases still require explicit confirmation.
+
 ## Repeatable checks
 
 Run `npm run check:feedback`. The browser suite exercises the local site in desktop and mobile Chrome, including approved wording, navigation, structure, logo presentation, gallery interactions, source-figure enlargement, service expansion, email-only contact, and horizontal overflow. Contact checks verify both displayed email addresses, the absence of form controls, and a read-only 404 response from the retired `/api/contact` endpoint. Tests never click email links, send messages, or navigate external destinations; accidental browser requests to the former contact endpoint remain blocked.
 
 The check command starts the local preview if necessary or reuses the one already running at `http://127.0.0.1:4173`. It uses installed Google Chrome and stores failed-run artifacts in ignored `.local-review/feedback-results/`. For a fresh development machine, install project dependencies and Google Chrome before running it.
 
-Before a release, `npm run build` and `npm run check:static` verify the exported site on local port 4174. This includes the same 28 feedback checks plus two desktop/mobile route-and-asset checks across all seven product briefs. Product links use trailing-slash directory URLs for GitHub Pages. GitHub Actions repeats these checks before deploying.
+Before a release, `npm run build` and `npm run check:static` verify the exported site on local port 4174. This includes the same 30 feedback checks plus two desktop/mobile route-and-asset checks across all seven product briefs. Product links use trailing-slash directory URLs for GitHub Pages. GitHub Actions repeats these checks before deploying.
 
 For visual review, inspect the affected section at desktop and mobile widths: sticky-header clearance, readable text, original artwork colors and proportions, figure labels, and unclipped content. When changing an image, verify it against the source document and check the full-size view. Automated checks cannot certify factual claims or image provenance by appearance alone.
 
-## Current audit — September 17, 2026
+## Current release review — October 6, 2026
+
+Applied U11–U13 locally: replaced Carrie with Miles on both leadership views; removed headshots and portrait placeholders; preserved Alex's original image outside the public asset directory; added a shared footer location component across the homepage, leadership page, and product briefs. The user subsequently confirmed Miles's title as Chief Technologist at Aurora Engineering and explicitly approved city/state-only Rockville, Maryland. Miles's biography remains omitted, with no inherited Carrie details.
+
+Validation after the title/location clarification: all 30 development feedback checks passed. Miles's confirmed title was visually reviewed on both leadership views at desktop and mobile widths. After the user approved this release under U14, a fresh `npm run build:local` and all 32 static-export checks passed. The exported homepage leadership and office footer were visually rechecked at desktop and mobile widths; the earlier detailed leadership and product-footer visual reviews remain applicable. Alex's original headshot is preserved locally and absent from the public export. The custom-domain plan is recorded in `DEPLOYMENT.md` and has not been applied.
+
+## Previous release audit — September 17, 2026
 
 The audit caught and corrected three small regressions: the MEDOS logo disappeared when the gallery switched to technical figures, HDRL's expansion was only in image metadata, and older CSS rules kept two body-text areas too small. The original figures remain the primary gallery imagery.
 
@@ -59,4 +70,4 @@ Validation: `npm run check:feedback` passed all 28 checks (14 groups at desktop 
 
 Release validation: the Next.js 16.3.5 static export passed all 30 checks, covering the feedback requirements, every product page, image and script assets, the legacy product redirect, and 404 behavior. Desktop and mobile visual review of the local export passed. The dependency audit reported zero known vulnerabilities after updates.
 
-**Outstanding:** B06's embedded NASA-image wording and B14's three verified headshots. Biography popups remain intentionally deferred. A SmallSat photograph is not pending: that source post is text-only.
+**Outstanding after October 6 update:** B06's embedded NASA-image wording. Miles's title is confirmed; city/state-only Rockville is explicitly approved. Headshots are intentionally paused under U11, and Miles's biography is omitted until source material is available. Biography popups remain intentionally deferred. A SmallSat photograph is not pending: that source post is text-only.

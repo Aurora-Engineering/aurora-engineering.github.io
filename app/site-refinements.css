@@ -88,7 +88,7 @@ body { font-size: 1.125rem; }
 .capability-card h3 { margin: 0 0 15px; font-size: 1.4rem; line-height: 1.3; }
 .capability-copy p { margin: 0; color: var(--muted); font-size: 1.0625rem; line-height: 1.65; }
 .team-section { background: #eaf2f8; }
-.team-card { grid-template-columns: 125px minmax(0, 1fr); min-height: 225px; background: white; }
+.team-card { grid-template-columns: minmax(0, 1fr); min-height: 200px; background: white; }
 .person-copy { padding: 28px 26px 42px; }
 .person-copy h3 { font-size: 1.5rem; line-height: 1.2; }
 .person-copy strong { font-size: 1rem; line-height: 1.5; }
@@ -188,6 +188,12 @@ body { font-size: 1.125rem; }
 .contact-email-address:hover { color: var(--cyan); }
 .contact-emails p { margin: 18px 0 0; max-width: 32rem; color: #d4e5f0; font-size: 1.125rem; line-height: 1.65; }
 .footer-links a { font-size: 1rem; }
+.office-locations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; min-width: 0; text-align: left; }
+footer:not(.brief-footer) > .office-locations { grid-column: 1 / -1; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.15); }
+.office-locations address { font-style: normal; }
+.office-locations strong { display: block; margin-bottom: 10px; color: var(--cyan); font-size: .9375rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; }
+.office-locations span { display: block; color: #d4e5f0; font-size: 1.125rem; line-height: 1.6; }
+.scientist-profile { grid-template-columns: minmax(0, 1fr); min-height: 0; }
 .scientist-roster-intro { display: block; }
 .scientist-roster-intro .section-kicker { margin-bottom: 18px; }
 .scientist-roster-intro > p:last-child { max-width: 54rem; margin-top: 24px; font-size: 1.25rem; }
@@ -232,7 +238,8 @@ body { font-size: 1.125rem; }
   .section-kicker { font-size: .8125rem; }
   .capability-grid { grid-template-columns: 1fr; gap: 24px; }
   .team-grid { grid-template-columns: 1fr; gap: 18px; }
-  .team-card { grid-template-columns: 95px minmax(0, 1fr); }
+  .team-card { grid-template-columns: minmax(0, 1fr); }
+  .office-locations { grid-template-columns: minmax(0, 1fr); }
   .person-copy { padding: 24px 20px 42px; }
   .person-copy h3 { font-size: 1.3rem; }
   .person-copy strong { font-size: .9375rem; }

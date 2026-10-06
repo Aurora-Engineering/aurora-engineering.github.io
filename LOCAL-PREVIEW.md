@@ -12,6 +12,7 @@ The current review applies the feedback in `website_edits.pptx`, with the follow
 
 - Shared sticky navigation on the homepage, leadership page, and product briefs, linking to homepage sections.
 - Updated hero copy and response labels, larger text, capability illustrations, partner logos, and leadership roles.
+- October 6 leadership and location updates: Carrie Hill is replaced by Miles Bengtson, whose user-confirmed Aurora Engineering title is Chief Technologist. All leadership photos and portrait placeholders are temporarily removed. Every footer shows the full Wilton address and the user-approved city/state-only location, Rockville, Maryland.
 - Leadership immediately after capabilities; collapsed service categories; removed duplicate MEDOS and publications sections.
 - Horizontal product and news galleries with arrow controls, keyboard navigation, touch scrolling, and reduced-motion support.
 - MEDOS logo and expanded name, plus CAPSTONE and MEDOS news photographs.
@@ -20,7 +21,7 @@ The current review applies the feedback in `website_edits.pptx`, with the follow
 
 ## Items still needing source material or a decision
 
-- Stephen Kreisler, Conrad Schiff, and Carrie Hill still use initials because verified headshots were not supplied. Alex Barrie's existing photograph remains.
+- Miles's biography and research links are omitted until suitable source material is supplied; Carrie's biography and links must not be transferred to him. His Chief Technologist title is confirmed, and a Rockville street address is not required for the approved city/state-only presentation.
 - The hero's HTML response label now says “Command instrument to safe mode.” The original NASA diagram is preserved and still contains “Disable High Voltage” within its source image.
 - The SmallSat post is text-only, so its gallery card uses a typographic cover.
 
@@ -28,7 +29,7 @@ The current review applies the feedback in `website_edits.pptx`, with the follow
 
 The local production build and TypeScript checks pass. Desktop and mobile browser checks covered navigation, gallery controls, service expansion, and product-page layout. Local image references, homepage section anchors, and all seven product gallery mappings were checked. Contact checks inspect addresses and layout without activating email links or sending messages; the retired endpoint is checked with a read-only GET request.
 
-The user approved updating the repository and deploying this reviewed site on September 17, 2026. Static export replaces the original hello-world landing page. Future updates still require explicit confirmation; domain settings are outside this release.
+The user approved the initial reviewed release on September 17, 2026, and the reviewed leadership and office-location update on October 6, 2026. Static export replaces the original hello-world landing page. Future updates still require explicit confirmation; Squarespace, domain/DNS, and GitHub custom-domain settings are outside this release.
 
 ## Added image sources
 

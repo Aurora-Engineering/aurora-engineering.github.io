@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProduct, products } from "../product-data";
 import SiteHeader from "../../components/site-header";
+import OfficeLocations from "../../components/office-locations";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -192,7 +193,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <footer className="brief-footer">
         <img src="/aurora-logo.png" alt="Aurora Engineering" />
-        <p>15 Main St. Unit B · Wilton, NH 03086</p>
+        <OfficeLocations />
         <Link href="/">Return to Aurora Engineering</Link>
       </footer>
     </main>

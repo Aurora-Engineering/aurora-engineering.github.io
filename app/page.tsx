@@ -3,6 +3,7 @@ import SiteHeader from "./components/site-header";
 import HorizontalGallery from "./components/horizontal-gallery";
 import PublicationFigure from "./components/publication-figure";
 import Link from "next/link";
+import OfficeLocations from "./components/office-locations";
 
 const capabilities = [
   {
@@ -90,36 +91,28 @@ const serviceGroups = [
 
 const team = [
   {
-    initials: "AB",
     name: "Dr. Alex Barrie",
     role: "Founder & Chief Executive Officer",
     focus: "Spacecraft autonomy, plasma instrumentation, mission operations",
-    photo: "/team/alex-barrie.jpg",
     href: "https://www.linkedin.com/in/alex-barrie-07892b28",
   },
   {
-    initials: "SK",
     name: "Stephen Kreisler",
     role: "Chief Technology Officer, Chief Information Officer",
     focus: "Flight and ground software, science operations systems",
-    photo: null,
     href: null,
   },
   {
-    initials: "CS",
     name: "Dr. Conrad Schiff",
     role: "Chief Scientist, Business Development Lead",
     focus: "Astrodynamics, formation flying, mission design, distributed systems",
-    photo: null,
     href: null,
   },
   {
-    initials: "CH",
-    name: "Dr. Carrie Hill",
-    role: "Research Director",
-    focus: "Spacecraft simulation, electric propulsion, numerical modeling, instrument development",
-    photo: null,
-    href: "https://www.linkedin.com/in/carrie-hill",
+    name: "Dr. Miles Bengtson",
+    role: "Chief Technologist",
+    focus: "",
+    href: null,
   },
 ];
 
@@ -292,21 +285,10 @@ export default function Home() {
         <div className="team-grid">
           {team.map((person) => (
             <article className="team-card" key={person.name}>
-              <div className={`portrait${person.photo ? " has-photo" : ""}`} aria-hidden="true">
-                <span>{person.initials}</span>
-                {person.photo && (
-                  <img
-                    src={person.photo}
-                    alt=""
-                    loading="lazy"
-                  />
-                )}
-                <i />
-              </div>
               <div className="person-copy">
                 <h3>{person.name}</h3>
-                <strong>{person.role}</strong>
-                <p>{person.focus}</p>
+                {person.role && <strong>{person.role}</strong>}
+                {person.focus && <p>{person.focus}</p>}
               </div>
               {person.href && <a className="person-profile-link" href={person.href} target="_blank" rel="noreferrer" aria-label={`View ${person.name} on LinkedIn`}>LinkedIn <Arrow /></a>}
             </article>
@@ -482,7 +464,8 @@ export default function Home() {
           <a href="#news">News</a>
           <a href="#contact">Contact</a>
         </div>
-        <span>© 2026 Aurora Engineering LLC · Wilton, New Hampshire</span>
+        <OfficeLocations />
+        <span>© 2026 Aurora Engineering LLC</span>
       </footer>
     </main>
   );

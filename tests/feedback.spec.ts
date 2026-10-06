@@ -131,7 +131,7 @@ test("homepage leadership follows capabilities with the approved introduction an
     ["Dr. Alex Barrie", "Founder & Chief Executive Officer"],
     ["Stephen Kreisler", "Chief Technology Officer, Chief Information Officer"],
     ["Dr. Conrad Schiff", "Chief Scientist, Business Development Lead"],
-    ["Dr. Carrie Hill", "Research Director"],
+    ["Dr. Miles Bengtson", "Chief Technologist"],
   ];
   await expect(leadership.locator("article")).toHaveCount(people.length);
   for (const [name, role] of people) {
@@ -139,12 +139,19 @@ test("homepage leadership follows capabilities with the approved introduction an
     await expect(card.locator("strong")).toHaveText(role);
     if (/Kreisler|Schiff/.test(name)) await expect(card.getByRole("link")).toHaveCount(0);
   }
+  await expect(leadership).not.toContainText("Carrie Hill");
+  await expect(leadership.locator("img, .portrait")).toHaveCount(0);
 });
 
 test("leadership profile page preserves titles without Steve or Conrad profile links", async ({ page }) => {
   await page.goto("/scientists");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(/^Our Leadership\s*Team$/);
   await expect(page.locator(".scientists-hero-copy > p").last()).toHaveText(leadershipIntro);
+  await expect(page.locator(".scientist-roster")).not.toContainText("Carrie Hill");
+  await expect(page.locator(".scientist-roster img, .scientist-portrait")).toHaveCount(0);
+  await expect(page.locator("#miles-bengtson h2")).toHaveText("Dr. Miles Bengtson");
+  await expect(page.locator("#miles-bengtson .scientist-name-row")).toContainText("Chief Technologist");
+  await expect(page.locator("#miles-bengtson .scientist-name-row strong")).toHaveText("Aurora Engineering");
   for (const [name, role] of [
     [/Stephen.*Kreisler/, "Chief Technology Officer, Chief Information Officer"],
     [/Dr\. Conrad Schiff/, "Chief Scientist, Business Development Lead"],
@@ -154,6 +161,19 @@ test("leadership profile page preserves titles without Steve or Conrad profile l
     await expect(profile.locator(".scientist-name-row").getByRole("link")).toHaveCount(0);
     // Published research links are intentionally retained and never opened here.
     await expect(profile.locator(".scientist-work a").first()).toBeAttached();
+  }
+});
+
+test("homepage, leadership and product footers show both office locations", async ({ page }) => {
+  for (const path of ["/", "/scientists/", "/products/medos/"]) {
+    await page.goto(path);
+    const offices = page.locator("footer .office-locations");
+    await expect(offices).toHaveCount(1);
+    await expect(offices.locator("address")).toHaveCount(2);
+    await expect(offices).toContainText("15 Main St. Unit B");
+    await expect(offices).toContainText("Wilton, NH 03086");
+    await expect(offices).toContainText("Rockville, Maryland");
+    await expect(offices.locator("address").filter({ hasText: "Rockville" }).locator("span")).toHaveText("Rockville, Maryland");
   }
 });
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "../components/site-header";
+import OfficeLocations from "../components/office-locations";
 
 export const metadata: Metadata = {
   title: "Leadership | Aurora Engineering",
@@ -21,12 +22,10 @@ export const metadata: Metadata = {
 const scientists = [
   {
     number: "01",
-    initials: "AB",
     name: "Dr. Alexander C. Barrie",
     familiarName: "Alex Barrie",
     role: "Founder & Chief Executive Officer",
     affiliation: "Aurora Engineering",
-    photo: "/team/alex-barrie.jpg",
     bio: "Alex leads Aurora’s work across spacecraft autonomy, plasma instrumentation, and mission operations. His recent research connects flight-proven instrumentation experience with transparent onboard decision systems, including the MEDOS framework demonstrated with NASA’s Magnetospheric Multiscale mission.",
     focus: ["Spacecraft autonomy", "Plasma instrumentation", "Mission operations", "Flight systems"],
     work: [
@@ -45,12 +44,10 @@ const scientists = [
   },
   {
     number: "02",
-    initials: "SK",
     name: "Stephen “Steve” Kreisler",
     familiarName: "Stephen Kreisler",
     role: "Chief Technology Officer, Chief Information Officer",
     affiliation: "Aurora Engineering at NASA Goddard",
-    photo: null,
     bio: "Stephen develops scientific software and data-system capabilities for heliophysics missions. His published work includes Python packages for the HERMES mission and cloud-oriented data processing for NASA’s Space Weather Science Operations Center.",
     focus: ["Scientific Python", "Heliophysics data", "Mission ground systems", "Open science"],
     work: [
@@ -69,12 +66,10 @@ const scientists = [
   },
   {
     number: "03",
-    initials: "CS",
     name: "Dr. Conrad Schiff",
     familiarName: "Conrad Schiff",
     role: "Chief Scientist, Business Development Lead",
     affiliation: "Scientific collaborator · NASA Goddard veteran",
-    photo: null,
     bio: "Conrad’s career spans orbital mechanics, formation flying, and mission design for programs including Clementine, WMAP, JWST, and MMS. His current research record includes distributed mission architectures, operational atmospheric-drag modeling, and the dynamics of interplanetary dust.",
     focus: ["Astrodynamics", "Formation flying", "Mission design", "Distributed systems"],
     work: [
@@ -98,27 +93,14 @@ const scientists = [
   },
   {
     number: "04",
-    initials: "CH",
-    name: "Dr. Carrie Hill",
-    familiarName: "Carrie Hill",
-    role: "Research Director",
+    name: "Dr. Miles Bengtson",
+    familiarName: "Miles Bengtson",
+    role: "Chief Technologist",
     affiliation: "Aurora Engineering",
-    photo: null,
-    bio: "Carrie works at the intersection of experiment development and numerical simulation. Her research includes spacecraft-environment interactions, electric-propulsion plume modeling, spacecraft charging, and optical instrument development for NASA’s PACE mission.",
-    focus: ["Spacecraft simulation", "Electric propulsion", "Numerical modeling", "Instrument development"],
-    work: [
-      {
-        type: "IEPC conference paper · 2022",
-        title: "Current Capabilities of AFRL’s Spacecraft Simulation Tool",
-        href: "https://ntrs.nasa.gov/citations/20220008291",
-      },
-      {
-        type: "IEEE IGARSS paper · 2023",
-        title: "Optical and Detector Design of the Ocean Color Instrument for the NASA PACE Mission",
-        href: "https://2023.ieeeigarss.org/TempDev/view_paper.php?PaperNum=4891",
-      },
-    ],
-    profile: "https://www.linkedin.com/in/carrie-hill",
+    bio: "",
+    focus: [],
+    work: [],
+    profile: null,
   },
 ];
 
@@ -149,30 +131,24 @@ export default function LeadershipPage() {
 
         {scientists.map((scientist) => (
           <article className="scientist-profile" id={scientist.familiarName.toLowerCase().replaceAll(" ", "-")} key={scientist.name}>
-            <div className={`scientist-portrait${scientist.photo ? " has-photo" : ""}`}>
-              <span>{scientist.initials}</span>
-              {scientist.photo && <img src={scientist.photo} alt={`Portrait of ${scientist.familiarName}`} />}
-              <i aria-hidden="true" />
-            </div>
-
             <div className="scientist-copy">
               <div className="scientist-name-row">
                 <div>
-                  <span>{scientist.number} · {scientist.role}</span>
+                  <span>{scientist.number}{scientist.role && ` · ${scientist.role}`}</span>
                   <h2>{scientist.name}</h2>
                   <strong>{scientist.affiliation}</strong>
                 </div>
                 {scientist.profile && <a href={scientist.profile} target="_blank" rel="noreferrer" aria-label={`Open public profile for ${scientist.familiarName}`}>Profile ↗</a>}
               </div>
 
-              <p className="scientist-bio">{scientist.bio}</p>
+              {scientist.bio && <p className="scientist-bio">{scientist.bio}</p>}
 
-              <div className="scientist-focus">
+              {scientist.focus.length > 0 && <div className="scientist-focus">
                 <span>Research focus</span>
                 <div>{scientist.focus.map((item) => <b key={item}>{item}</b>)}</div>
-              </div>
+              </div>}
 
-              <div className="scientist-work">
+              {scientist.work.length > 0 && <div className="scientist-work">
                 <span>Selected work</span>
                 <div>
                   {scientist.work.map((work) => (
@@ -183,7 +159,7 @@ export default function LeadershipPage() {
                     </a>
                   ))}
                 </div>
-              </div>
+              </div>}
             </div>
           </article>
         ))}
@@ -199,7 +175,7 @@ export default function LeadershipPage() {
 
       <footer className="brief-footer">
         <img src="/aurora-logo.png" alt="Aurora Engineering" />
-        <p>15 Main St. Unit B · Wilton, NH 03086</p>
+        <OfficeLocations />
         <Link href="/">Return home</Link>
       </footer>
     </main>

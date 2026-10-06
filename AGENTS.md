@@ -12,7 +12,7 @@ Do not invent mission results, ownership, partnerships, qualifications, headshot
 2. After each coherent batch of website changes, run `npm run check:feedback`. Inspect any failures and fix regressions; do not weaken a check merely to make it pass. If a test no longer matches an explicit user decision, update it and the checklist together.
 3. Visually inspect the affected section on the local preview at desktop and mobile widths. Automated checks do not replace judging artwork, spacing, readability, or factual credibility.
 4. For application logic, components, routing, or dependency changes, also run `npm run build:local`. For isolated copy or CSS changes, the feedback checks and relevant visual review are sufficient unless they expose another concern.
-5. Report material gaps honestly. The three missing headshots and embedded text in the original NASA artwork are tracked open items, not completed checks. Keep status in `FEEDBACK-CHECKLIST.md` current.
+5. Report material gaps honestly. Headshots are temporarily disabled per the October 6 user decision. The embedded text in the original NASA artwork and any unconfirmed leadership/address details remain tracked open items. Keep status in `FEEDBACK-CHECKLIST.md` current.
 
 Do not add or run recurring background jobs just to satisfy this workflow. Run checks as part of the website work.
 
@@ -22,7 +22,7 @@ All previews must use a local loopback server. Local working-file edits and chec
 
 Use `npm run dev:local` for development previews. `npm run build` (also available as `build:local`) produces the GitHub Pages static export in `out/`; `npm run preview:static` previews it at loopback port 4174. Before an approved release, run `npm run check:static` and visually inspect that local export. The GitHub Actions workflow builds and tests approved pushes to `main` before deploying.
 
-The user explicitly authorized updating the repository and deploying the reviewed site on September 17, 2026. That authorization applies to this release; future repository updates still require explicit confirmation. Do not change domain/DNS settings as part of this release.
+The user explicitly authorized the initial reviewed release on September 17, 2026, and the reviewed leadership and office-location update on October 6, 2026. The October authorization covers replacing Carrie with Miles Bengtson, Chief Technologist, temporarily removing leadership headshots, and adding Rockville, Maryland alongside the New Hampshire address. Future repository updates still require explicit confirmation. Do not change Squarespace, domain/DNS, or GitHub custom-domain settings as part of this release.
 
 Contact is email-only: no submission form, email API, or additional form service. Preserve the visible general-inquiry and careers addresses. Never trigger email applications or send real inquiries as part of testing; inspect `mailto:` link destinations without activating them.
 
